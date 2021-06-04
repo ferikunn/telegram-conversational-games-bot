@@ -59,14 +59,14 @@ def c_start(update: Update, ctx: CallbackContext) -> None:
 	"""General info about the bot and command help."""
 	
 	text = (
-		"Hi! I'm a Conversational Games Bot\n",
-		">> List Of Games <<",
-		"• Truth or Dare (/truth, /dare)",
-		"• Never Have I Ever (/ever)",
-		"• Would You Rather (/wyr)",
-		"• This Or That (/tot)",
-		"• Will You Press The Button (/wyp)\n",
-		"Add me to a group and use the commands to play with friends :)"
+		"Hai! Saya Bot Game Percakapan \n " ,
+		">> Daftar Permainan <<" ,
+		"• Truth or Dare (/truth, /dare)" ,
+		"• Tidak Pernah (/pernah)" ,
+		"• Apakah Anda Lebih Suka (/wyr)" ,
+		"• Ini Atau Itu (/tot)" ,
+		"• Maukah Anda Menekan Tombol (/wyp) \n " ,
+		"Tambahkan saya ke grup dan gunakan perintah untuk bermain dengan teman :)"
 	)
 	ctx.bot.send_message(chat_id = update.effective_chat.id, text = '\n'.join(text))
 
