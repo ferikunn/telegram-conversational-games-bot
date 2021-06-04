@@ -1,1 +1,1 @@
-worker: python cgb.py
+worker: python main.py
