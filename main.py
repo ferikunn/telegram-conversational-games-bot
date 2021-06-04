@@ -31,7 +31,7 @@ RED_BLUE_KEYBOARD = InlineKeyboardMarkup([[
 print("=" * 25)
 print("Conversational Games Bot")
 print("=" * 25)
-print("1.0.0 | Release | By Alan", '\n')
+print("1.0.0 | Release | By Feri", '\n')
 
 ## Functions.
 def parse_list_file(file_path: str) -> list:
@@ -83,13 +83,13 @@ def c_dare(update: Update, ctx: CallbackContext) -> None:
 	ctx.bot.send_message(chat_id = update.effective_chat.id, text = response, parse_mode=ParseMode.MARKDOWN_V2)
 
 def c_never(update: Update, ctx: CallbackContext) -> None:
-	"""Get a never have I ever question."""
+	"""Dapatkan pertanyaan yang tidak pernah saya miliki."""
 	
-	response = f"*Never have I ever* {escape_markdown(choice(database['nhie']), 2)}" 
+	response = f"*Saya tidak pernah* {escape_markdown(choice(database['nhie']), 2)}" 
 	ctx.bot.send_message(chat_id = update.effective_chat.id, text = response, parse_mode=ParseMode.MARKDOWN_V2)
 
 def c_tot(update: Update, ctx: CallbackContext) -> None:
-	"""Get a this or that question."""
+	"""Dapatkan pertanyaan ini atau itu."""
 	
 	response = choice(database['tot'])
 	
@@ -118,7 +118,7 @@ def c_wyr(update: Update, ctx: CallbackContext) -> None:
 	title, desc, url = escape_markdown(result['title'], 2), escape_markdown(result['moreinfo'], 2), result['short_url']
 	
 	message = []
-	message.append(f"_{escape_markdown('Would you rather...', 2)}_")
+	message.append(f"_{escape_markdown('Apakah kamu lebih suka?...', 2)}_")
 	message.append(f"\n*{title}*")
 	message.append(escape_markdown(f"({(option1_total / option_total * 100):.1f}%) 🔴 {option1}", 2))
 	message.append(escape_markdown(f"({(option2_total / option_total * 100):.1f}%) 🔵 {option2}", 2))
@@ -131,7 +131,7 @@ def c_wyr(update: Update, ctx: CallbackContext) -> None:
 	ctx.chat_data[msg.message_id] = {'message': message, 'users_red': [], 'users_blue': []}
 	
 def c_wyptb(update: Update, ctx: CallbackContext) -> None:
-	"""Get a will you press the button question."""
+	"""Dapatkan kemauan Anda menekan tombol pertanyaan button."""
 	
 	response = requests.post("https://api2.willyoupressthebutton.com/api/v2/dilemma")
 	result = response.json()['dilemma']
@@ -141,16 +141,16 @@ def c_wyptb(update: Update, ctx: CallbackContext) -> None:
 	press_total = will_press + wont_press
 	
 	message = []
-	message.append(f"_{escape_markdown('Will you press the button if...', 2)}_")
+	message.append(f"_{escape_markdown('Apakah Anda akan menekan tombol jika...', 2)}_")
 	message.append(f"\n{escape_markdown(txt1, 2)}\n*{escape_markdown('but...', 2)}*\n{escape_markdown(txt2, 2)}\n")
-	message.append(escape_markdown(f"({(will_press / press_total * 100):.1f}%) 🔴 I will press the button.", 2))
-	message.append(escape_markdown(f"({(wont_press / press_total * 100):.1f}%) 🔵 I won't press the button.", 2))
+	message.append(escape_markdown(f"({(will_press / press_total * 100):.1f}%) 🔴 Saya akan menekan tombol.", 2))
+	message.append(escape_markdown(f"({(wont_press / press_total * 100):.1f}%) 🔵 Saya tidak akan menekan tombol.", 2))
 	
 	msg = ctx.bot.send_message(chat_id = update.effective_chat.id, text = '\n'.join(message), reply_markup= RED_BLUE_KEYBOARD, parse_mode=ParseMode.MARKDOWN_V2)
 	ctx.chat_data[msg.message_id] = {'message': message, 'users_red': [], 'users_blue': []}
 
 def q_buttons(update: Update, ctx: CallbackContext) -> None:
-	"""Callback Query Handler for Would You Rather, Press The Button, and This or That."""
+	"""Callback Query Handler untuk Apakah Anda Lebih Suka, Tekan Tombol, dan Ini atau Itu."""
 	
 	query = update.callback_query
 	t_choice = query.data  # the button the user pressed, could be red or blue
@@ -181,7 +181,7 @@ def q_buttons(update: Update, ctx: CallbackContext) -> None:
 			ctx.chat_data[msg_id]['message'] = markdown_msg
 			
 	if (user in ctx.chat_data[msg_id]['users_red']) or (user in ctx.chat_data[msg_id]['users_blue']):
-		query.answer(text = "You already picked an option.", show_alert = True)
+		query.answer(text = "Anda sudah memilih opsi.", show_alert = True)
 		return
 	else:
 		if t_choice == 'red':
