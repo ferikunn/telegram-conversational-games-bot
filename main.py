@@ -59,7 +59,7 @@ def c_start(update: Update, ctx: CallbackContext) -> None:
 	"""General info about the bot and command help."""
 	
 	text = (
-		"Hai! Saya Bot Game Percakapan yang dikelolakan Oleh @XFlick\n",
+		"Hai! Saya Bot Game Percakapan\n",
 		">> Daftar Permainan <<",
 		"• Truth or Dare (/truth, /dare)",
 		"• Belum pernah aku (/ever)" ,
