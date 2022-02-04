@@ -59,14 +59,14 @@ def c_start(update: Update, ctx: CallbackContext) -> None:
 	"""General info about the bot and command help."""
 	
 	text = (
-		"Hai! Saya Bot Game Percakapan\n",
+		"Hai! Saya Bot Game Percakapan yang dikelolakan Oleh @XFlick\n",
 		">> Daftar Permainan <<",
 		"• Truth or Dare (/truth, /dare)",
 		"• Belum pernah aku (/ever)" ,
 		"• Apakah Anda Lebih Suka (/wyr)",
 		"• Ini Atau Itu (/tot)",
 		"• Maukah Anda Menekan Tombol (/wyp)\n",
-		"Tambahkan saya ke grup dan gunakan perintah untuk bermain dengan teman :)"
+		"Tambahkan saya ke grup dan gunakan perintah untuk bermain dengan teman :).Share ke temen² juga yahh"
 	)
 	ctx.bot.send_message(chat_id = update.effective_chat.id, text = '\n'.join(text))
 
